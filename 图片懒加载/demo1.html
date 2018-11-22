@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片懒加载</title>
+    <style>
+        body{margin:0;padding:0;}
+        img{width:100%;}
+    </style>
+</head>
+<body>
+<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503598427913&di=9ba1d5901cb6d7d6a704c36fef1c4374&imgtype=0&src=http%3A%2F%2Fwww.bz55.com%2Fuploads%2Fallimg%2F150910%2F139-150910120R7.jpg" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503598427913&di=9ba1d5901cb6d7d6a704c36fef1c4374&imgtype=0&src=http%3A%2F%2Fwww.bz55.com%2Fuploads%2Fallimg%2F150910%2F139-150910120R7.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503597814844&di=cc7d99c22a427fc8d2bafcace9ac7495&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F8%2F595f032f1ebc7.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503598481134&di=45741bcf8c4b753947f1798260a56bda&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F6%2F57fc4d4fc1aba.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504193272&di=5b1e8fc464e7b4ea2d20560cec774caa&imgtype=jpg&er=1&src=http%3A%2F%2Fimg5.web07.cn%2FUPics%2FBizhi%2F2017%2F0506%2F320833060944422.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504193315&di=15241f07e354b78b0c84ccea16d83d15&imgtype=jpg&er=1&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F1%2F5754d5dcc55f0.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504193444&di=556d1035906e924a49175a5e08fda17f&imgtype=jpg&er=1&src=http%3A%2F%2Ftupian.enterdesk.com%2F2014%2Fmxy%2F01%2F24%2F1%2F8.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503598785362&di=b90b80a63b3d5da8edeff6624e547c74&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Ff%2F5902f9eaab0d7.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503598793845&di=9f996fb47b2947b18781c73f0b0fad4c&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2%2F56b02909d8e75.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503598845649&di=8eb54a4d4e31b971f36c69c291bbf54c&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F8%2F57aa97b3797f2.jpg" title="小清新">
+<img src="" alt="清新美女" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503598670935&di=4542db19cc8d2ebcddd394f48ac4683c&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2%2F56b0290d0154a.jpg" title="小清新">
+<script>
+    var img =document.getElementsByTagName('img'),
+        len =img.length,
+        n = 0;
+    //检测是否到可视域
+    var inClientHeight=function(ele){
+        var eTop =ele.getBoundingClientRect().top;
+        var clientH=document.documentElement.clientHeight || document.body.clientHeight;
+        return eTop<=clientH+100;
+    };
+
+    //页面载入加载
+    loadImg();
+    //滚动加载图片
+    window.onscroll=loadImg;
+    function loadImg(){
+        for(i=n;i<len;i++){
+            if(inClientHeight(img[i])&&img[i].getAttribute("src")==""){
+                img[i].src=img[i].getAttribute("data-src");
+                n=i+1;
+            }
+
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

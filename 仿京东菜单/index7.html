@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function factorial(num){
+        if(num<=0 || num != Math.round(num)){
+            return "input error";
+        }
+        else if(num==1){
+            return 1;
+        }else{
+            return num*arguments.callee(num-1);
+        }
+    }
+    document.write(factorial(5));
+</script>
+</body>
+</html>

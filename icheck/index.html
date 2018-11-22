@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>icheck test</title>
+    <link rel="stylesheet" href="skins/square/blue.css">
+</head>
+<body >
+<label><input type="checkbox">篮球</label>
+<label><input type="checkbox" checked>足球</label>
+<input type="radio" name="iCheck">
+<input type="radio" name="iCheck" checked>
+<hr>
+<input type="checkbox" id="input-1">
+<hr>
+<label>
+    <input type="checkbox" name="quux[1]" disabled>
+    Foo
+</label>
+
+<label for="baz[1]">Bar</label>
+<input type="radio" name="quux[2]" id="baz[1]" checked>
+
+<label for="baz[2]">Bar</label>
+<input type="radio" name="quux[2]" id="baz[2]">
+<hr>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/icheck.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        $('input').iCheck({
+            labelHover: false,
+            cursor: false,
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+   /*     $('input').on('ifChecked', function(event){
+            alert(event.type + ' callback');
+        });*/
+        $('#input-1').iCheck('check');
+        $('#input-1').iCheck('uncheck');
+        $('#input-1').iCheck('disable');
+        //$('#input-1').iCheck('destroy');
+    });
+
+</script>
+
+</body>
+</html>

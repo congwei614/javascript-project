@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./docs/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./dist/bootstrap-editable.css">
+    <link rel="stylesheet" href="./dist/font.css">
+    <link rel="stylesheet" href="./dist/custom.css">
+</head>
+<style>
+/*    .select-icon{
+        color:#777;
+        position: absolute;
+        right:5px;
+        top:50%;
+        -webkit-transform: translate3d(0,-50%,0);
+        -moz-transform: translate3d(0,-50%,0);
+        -ms-transform: translate3d(0,-50%,0);
+        -o-transform: translate3d(0,-50%,0);
+        transform: translate3d(0,-50%,0);
+    }*/
+</style>
+<body>
+<!--第一种方案是通过data-toggle属性生成-->
+<!--<table data-toggle="table" data-url="docs/data/data1/demo.response.json">
+    <thead>
+    <tr>
+        <th data-field="name">Item Name</th>
+        <th data-field="stargazers_count">Item Count</th>
+        <th data-field="forks_count">Item Forks</th>
+        <th data-field="description">Item Description</th>
+    </tr>
+    </thead>
+</table>-->
+<!--第一种通过JavaScript实例-->
+<div class="modal-wrapper">
+    <div class="es-navigation">
+        <div class="bread">
+            <i class="fa fa-tachometer"></i><span class="bread-txt">门户管理</span>
+        </div>
+    </div>
+    <div class="sort-control">
+        <span class="sort-txt-box">
+            <span class="sort-lock"><i class="fa fa-lock"></i>手动排序</span>
+            <span class="sort-unlock"><i class="fa fa-unlock-alt"></i>锁定保存</span>
+        </span>
+        <!--<button>保存</button>-->
+        <span class="sort-tips">温馨提示：在下方列表中直接拖动排序</span>
+    </div>
+    <div id="toolbar">
+            <button id="btn_add" type="button" class="eis-btn">复制</button>
+            <button id="btn_edit" type="button" class="eis-btn" >启用</button>
+            <button id="btn_delete" type="button" class="eis-btn">禁用</button>
+            <button id="btn_upload" type="button" class="eis-btn" >新建</button>
+            <button id="btn_upload" type="button" class="eis-btn" >删除</button>
+    </div>
+    <!--data-use-row-attr-func="true" data-reorderable-rows="true"-->
+    <table id="table"></table>
+</div>
+<script src="./docs/assets/js/jquery.min.js"></script>
+<script src="./docs/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="./dist/bootstrap-table.min.js"></script>
+<script src="./dist/extensions/toolbar/bootstrap-table-toolbar.js"></script>
+<script src="./dist/bootstrap-editable.min.js"></script>
+<script src="https://cdn.bootcss.com/TableDnD/1.0.3/jquery.tablednd.min.js"></script>
+<script src="./dist/extensions/reorder-rows/bootstrap-table-reorder-rows.min.js"></script>
+<script src="./dist/extensions/editable/bootstrap-table-editable.min.js"></script>
+<script src="./dist/Sortable1.7.0.min.js"></script>
+<script src="./dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        function _init_bootstrapTable(){
+            $('#table').bootstrapTable({
+                classes: 'table table-no-bordered',
+                sortable: true,
+                sortName:'field',
+                sortOrder: "asc",
+                pagination:true,
+                pageNumber:1,
+                pageSize:5,
+                paginationDetailHAlign:'left',
+                paginationHAlign:'right',
+                paginationPreText:'上一页',
+                paginationNextText:'下一页',
+                pageList:[10, 25, 50, 100, 'All'],
+                showColumns:false,
+                showRefresh:false,
+                search:false,
+                searchText:'',
+                searchAlign:'left',
+                buttonsAlign:'right',
+                toolbar:'#toolbar',
+                toolbarAlign:'right',
+                editable:true,
+                columns: [{
+                    checkbox: true,
+                    field: 'id',
+                    title: '全选'
+                }, {
+                    field: 'name',
+                    title: '常用批语',
+                    sortable:true,
+                    editable: {
+                        type: 'text',
+                        title: '常用批语',
+                        validate: function (v) {
+                            if (!v) return '常用批语不能为空';
+                        }
+                    },
+                }, {
+                    field: 'switch',
+                    title: '是否启用',
+                    align:'center',
+                    formatter:function(id){
+                        return '<div class="testswitch"><input class="testswitch-checkbox" id="onoffswitch'+id+'" type="checkbox"> <label class="testswitch-label" for="onoffswitch'+id+'"> <span class="testswitch-inner" data-on="开启" data-off="关闭"></span> <span class="testswitch-switch"></span></label> </div> '
+                    }
+                },{
+                    field: 'person',
+                    title: '适用对象',
+                    /*editable:{
+                     type: "select",              //编辑框的类型。支持text|textarea|select|date|checklist等
+                     source: [{ value: 1, text: "admin" }, { value: 2, text: "小明" }, {value:3,text:"小红"}],
+                     title: "选择成员",           //编辑框的标题
+                     disabled: false,           //是否禁用编辑
+                     //emptytext: "空文本",       //空值的默认文本
+                     mode: "popup",            //编辑框的模式：支持popup和inline两种模式，默认是popup
+                     validate: function (value) { //字段验证
+                     if (!$.trim(value)) {
+                     return '不能为空';
+                     }
+                     }
+                     }*/
+                }],
+                data: [{
+                    id: 1,
+                    name: '同意',
+                    switch: '1',
+                    person:'全体成员'
+                }, {
+                    id: 2,
+                    name: '绝不允许',
+                    switch: '2',
+                    person:'admin 小明'
+                }, {
+                    id: 3,
+                    name: 'hello wrod',
+                    switch: '3',
+                    person:'admin 小明'
+                }, {
+                    id: 4,
+                    name: '你好世界',
+                    switch: '4',
+                    person:'admin 小明'
+                }, {
+                    id: 5,
+                    name: '协调后，解决',
+                    switch: '5',
+                    person:'admin 小明'
+                }, {
+                    id: 6,
+                    name: '必须辞退',
+                    switch: '6',
+                    person:'admin 小明'
+                }, {
+                    id: 7,
+                    name: '不同意',
+                    switch: '7',
+                    person:'admin 小明'
+                }, {
+                    id: 8,
+                    name: '不同意',
+                    switch: '8',
+                    person:'admin 小明'
+                }, {
+                    id: 9,
+                    name: '不同意',
+                    switch: '9',
+                    person:'admin 小明'
+                }]
+            });
+        }
+        _init_bootstrapTable();
+       /*手动排序 begin*/
+        var el = document.getElementById('table');
+        var $table = $('#table')
+        $table.find('tr').addClass('selection')
+        var tbody = $table.find('tbody').addClass('selections').get(0);
+        var opts = {
+            animation:150,
+            sort:false,
+            draggable: ".selection",
+        }
+        var sortable =Sortable.create(tbody,opts);
+       /*手动排序 end*/
+        var $sortBox =$('.sort-txt-box'),
+            $lock =$sortBox.find('.sort-lock'),
+            $unlock=$sortBox.find('.sort-unlock'),
+            $tips = $('.sort-control .sort-tips');
+        $sortBox.on('click',function(){
+               console.log(sortable)
+            var state = sortable.option("sort"); // get
+            sortable.option("sort", !state); // set
+            if($lock.position().left>=0){
+                $lock.animate({
+                    left:-80
+                },300)
+                $unlock.animate({
+                    left:-75
+                },300)
+                $tips.show();
+                $('#table').addClass('table-cursor').attr({'data-use-row-attr-func':'="true','data-reorderable-rows':'true'})
+                }else if($('.sort-lock').position().left<0){
+                $lock.animate({
+                    left:0
+                },300)
+                $unlock.animate({
+                    left:0
+                },300)
+                $tips.hide()
+                $('#table').removeClass('table-cursor').removeAttr('data-use-row-attr-func data-reorderable-rows')
+            }
+        })
+    })
+</script>
+</body>
+</html>

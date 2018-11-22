@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片3D正反转换</title>
+    <style>
+        *{margin:0;padding:0;box-sizing: border-box}
+        body{
+            -webkit-font-smoothing:antialiased;
+            user-select: none;
+        }
+        .photo_wrap{
+            width:280px;
+            height:350px;
+            margin:30px auto;
+            box-shadow:0 0 2px rgba(0,0,0,.05);
+            position: relative;
+            perspective: 800px;
+            -webkit-perspective: 800px;
+            cursor:pointer;
+        }
+        .photo_wrap .photo{
+            width:100%;
+            height:100%;
+            position: absolute;
+            transition:all 1s;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        .photo_wrap .side{
+            width:100%;
+            height:100%;
+            position: absolute;
+            padding:5px;
+            background: #eee;
+            top:0;
+            left:0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .side_front{
+          transform: rotateY(0deg);
+        }
+        .photo_wrap figure{
+            width:100%;
+            height: 100%;
+        }
+        .photo_wrap figure img{
+            width:100%;
+        }
+        .photo_wrap figure figcaption{
+            text-align: center;
+            line-height: 35px;
+        }
+        .side_back{
+            transform: rotateY(180deg);
+        }
+        .photo_front .photo{
+            -webkit-transform:rotateY(0deg)
+        }
+        .photo_back .photo{
+        -webkit-transform:rotateY(180deg)
+        }_
+    </style>
+</head>
+<body>
+<div class="photo_wrap photo_front" onclick="turn(this)">
+    <div class="photo">
+        <div class="side side_front">
+            <figure>
+                <img src="./ying.jpg" alt="赵丽颖">
+                <figcaption>赵丽颖小清新</figcaption>
+            </figure>
+
+        </div>
+        <div class="side side_back">
+            <p class="desc">图片描述。。。。。。。</p>
+        </div>
+    </div>
+</div>
+<script>
+    //通用函数
+    function getEle(name){
+        var method = name.charAt(0)==='#'?'getElementById':'getElementsByClassName';
+        return document[method](name.substr(1));
+    }
+    function turn(ele){
+        var cls = ele.className;
+        if(/photo_front/.test(cls)){
+           cls = cls.replace(/photo_front/,'photo_back');
+        }else{
+          cls = cls.replace(/photo_back/,'photo_front');
+        }
+        return ele.className=cls;
+
+    }
+</script>
+</body>
+</html>

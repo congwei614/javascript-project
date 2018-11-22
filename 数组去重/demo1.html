@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width user-scalable=no initial-scale=1" />
+    <title>数组去重-方法一</title>
+
+</head>
+<body>
+<script>
+    function unique(arr){
+        var res=[arr[0]];
+        arr.forEach(function(v,k){
+            var repeat = false;
+            res.forEach(function(item,index){
+                if(v===item){
+                    repeat=true;
+                    return false;
+                }
+            });
+            if(!repeat){
+                res.push(v);
+            }
+        });
+
+
+        return res;
+    }
+    console.log(unique([1,23,34,568,8768,8243,23,568]))
+    /*
+    *      arr   [ 1,3 ,3 ,8 ,9,10 ,12, 8 ,10]
+    *      res[1,3]
+    *      arr.map(callfun);
+    *      callfun(item ,index arr);
+    *      $.ajax({
+    *            type:Get,
+    *            data{
+    *                  name:"jking",
+    *                  age:27
+    *            },
+    *            dataType:"jsonp",
+    *            success:function(){},
+    *            error:function(){}
+    *
+    *      })
+    *      $.get(
+    *             "url",
+    *             {name:"jking",age:"27"},
+    *             function(data){
+    *                console.log(data)
+    *             }
+    *             )
+    *           var width = document.documentElement.clientWidth||document.body.clientWidth
+    *             var e = e || window.event
+    *             var target = e.target||e.srcElement
+    * */
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数绑定</title>
+    <style>
+        .box{width:100px; height: 100px; background: red;}
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<div id="box">q</div>
+<script>
+    function addEvent (el,type,callback){
+        if(el.addEventListener){
+            el.addEventListener(type,callback,false)
+        }else if(el.attachEvent){
+            el.attachEvent("on"+type,callback);
+        }else{
+            el['on'+type]=callback;
+        }
+    }
+    //通用函数1
+    function getEle(name){
+        var method = name.substr(0,1)=='.'?'getElementsByClassName':'getElementById';
+        return document[method](name.substr(1));
+    }
+    //或者
+    function getEle(name){
+        var method = name.charAt(0)=='.'?'getElementsByClassName':'getElementById';
+        return document[method](name.substr(1));
+    }
+    //通用函数2
+    function g(name){
+        if(name.substr(0,1)=='.'){
+            return document.getElementsByClassName(name.substr(1))
+        }
+        return document.getElementById(name)
+    }
+    //通用函数3
+    function getE(id){
+        return typeof id ==='string'?document.getElementById(id):id;
+    }
+    //定义一个获取一个区间随机数；
+    function random(range){
+        var max = Math.max(range[0],range[1]);
+        var min = Math.min(range[0],range[1]);
+        var diff = max-min;
+        var number =Math.ceil(Math.random()*diff)+min;
+        return number;
+    }
+    function a(){
+        alert("a");
+    }
+    var box = document.querySelector(".box");
+    addEvent(box,"click",a);
+</script>
+</body>
+</html>

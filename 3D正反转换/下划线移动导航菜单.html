@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下划线移动导航菜单</title>
+</head>
+<style>
+    *{margin:0;padding:0;box-sizing: border-box;}
+    .clear_fix:after{content:'';display: table;clear: both;}
+    #nav{margin:100px auto; width:600px;background-color:#eee;}
+    .nav_menu{ list-style: none}
+    .nav_menu li{position: relative; float:left; width:120px; text-align: center; line-height: 45px; cursor:pointer;}
+    .nav_menu li::after{position: absolute; content:''; margin:auto;left:0;right:0;bottom:0; width:0; height: 2px;background-color:#f44283;transition:all .2s; -webkit-transition:all .2s ;}
+    .nav_menu li a{color:#666;text-decoration:none}
+    .nav_menu li:hover a {color:#f00;}
+    .nav_menu li:hover::after{width:100%; }
+
+    /*.nav_menu li.active:after{width:100%;transform:scale(1);-webkit-transform:scale(1)}*/
+</style>
+<body>
+<nav id="nav" class="clear_fix">
+    <ul class="nav_menu">
+        <li class="item"><a href="#"> 菜单一</a></li>
+        <li class="item"><a href="#"> 菜单二</a></li>
+        <li class="item"><a href="#"> 菜单三</a></li>
+        <li class="item"><a href="#"> 菜单四</a></li>
+    </ul>
+</nav>
+</body>
+</html>

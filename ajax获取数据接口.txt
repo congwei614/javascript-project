@@ -1,0 +1,12 @@
+后台数据接口地址：https://route.showapi.com/181-1；
+请求参数：
+请求账号：showapi_appid=3060；
+请求密码：showapi_sign=98960666afeb4992ae91971d13494090；
+请求多少条数据：num=8；
+是否随机获取数据：rand=1；
+从多少也开始请求：page=1；
+
+
+
+
+https://route.showapi.com/181-1?showapi_appid=30603&showapi_sign=98960666afeb4992ae91971d13494090&num=8&rand=1&page=1

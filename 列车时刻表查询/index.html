@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>列车时刻表查询</title>
+    <link href="https://cdn.bootcss.com/jquery-mobile/1.4.5/jquery.mobile.css" rel="stylesheet">
+</head>
+<body>
+<div data-role="page" id="index">
+    <div data-role="header" data-position="fixed"><h1>火车时刻表查询</h1></div>
+    <div data-role="main" class="ui-content">
+        <form method="post" action="">
+            <div class="ui-field-contain">
+                    <label>始发站：</label>
+                    <input type="text">
+            </div>
+            <div class="ui-field-contain">
+                    <label>终点站</label>
+                    <input type="text">
+            </div>
+            <div class="ui-field-contain">
+                    <label>车　次</label>
+                    <input type="text">
+            </div>
+            <input type="button" value="搜索" >
+        </form>
+        <a href="#detail" class="ui-btn" data-transition="flow">详情</a>
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <a href="#">
+                    <h2>G1次</h2>
+                    <p>北京-上海北京-上海北京-上海北京-上海北京-上海北京-上海</p>
+                    <p>用时5小时</p>
+                    <p class="ui-li-aside"><strong>09:00发</strong></p>
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h2>G1次</h2>
+                    <p>北京-上海</p>
+                    <p>用时5小时</p>
+                    <p class="ui-li-aside">09:00发车</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h2>G1次</h2>
+                    <p>北京-上海</p>
+                    <p>用时5小时</p>
+                    <p class="ui-li-aside">09:00发车</p>
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h2>G1次</h2>
+                    <p>北京-上海</p>
+                    <p>用时5小时</p>
+                    <p class="ui-li-aside">09:00发车</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h2>G1次</h2>
+                    <p>北京-上海</p>
+                    <p>用时5小时</p>
+                    <p class="ui-li-aside">09:00发车</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div data-role="footer"  data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="search"  class="ui-btn-active">查询</a></li>
+                <li><a href="#" data-icon="star" >收藏</a></li>
+                <li><a href="" data-icon="gear" >设置</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="detail">
+    <div data-role="header" data-position="fixed"><h1>火车时刻表查询</h1></div>
+    <div data-role="main" class="ui-content">
+        <table data-role="table" class="ui-responsive table-stroke" data-mode="reflow">
+            <thead>
+            <th>车次</th>
+            <th>始发时间</th>
+            <th>到站时间</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>G1001</td>
+                <td>9:00</td>
+                <td>15:00</td>
+            </tr>
+            <tr>
+                <td>G1001</td>
+                <td>9:00</td>
+                <td>15:00</td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="#index" class="ui-btn">index</a>
+    </div>
+    <div data-role="footer"  data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="search"  class="ui-btn-active">查询</a></li>
+                <li><a href="#" data-icon="star" >收藏</a></li>
+                <li><a href="" data-icon="gear" >设置</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</body>
+</html>

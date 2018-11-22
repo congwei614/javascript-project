@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动展开</title>
+    <style type="text/css">   /*设置广告和正文的CSS样式*/
+    #ad{width:auto; height:300px;background:#f00;
+        text-align:center;
+        margin:0 auto;
+        overflow: hidden;
+    }
+    .content{ background:#ff0; width:1200px; height:800px; text-align:center; }
+
+    </style>
+    <script type="text/javascript">
+
+        //增加广告宽度函数
+        var width=0
+        function addWidth(){
+            if(width<960){
+                width+=10;
+                document.getElementById("ad").style.width=width+'px';
+                setTimeout(addWidth,10)
+            }
+        }
+
+
+
+
+        //在网页加载完毕时，调用增加宽度函数，等待5秒钟后调用减少宽度函数。
+
+        window.onload=function(){
+            addWidth();
+            setTimeout(subWidth,5000);
+        }
+
+function subWidth(){
+    if(width>0){
+        width-=10;
+        document.getElementById("ad").style.width=width+'px';
+        setTimeout(subWidth,10)
+    }else{
+        document.getElementById("ad").style.display="none";
+    }
+}
+
+        //减少广告宽度函数
+
+    </script>
+</head>
+<body>
+<!--广告和正文的HTML代码-->
+<div id="ad">
+    <h2>广告标题</h2>
+    <p>广告内容</p>
+</div>
+<div class="content">
+    这里是正文
+</div>
+
+
+</body>
+</html>

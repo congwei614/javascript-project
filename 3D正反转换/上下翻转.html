@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片上下翻转</title>
+    <style>
+        *{
+            margin:0;padding:0;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+        }
+        body{
+            background: #FFF;
+            user-select:none;
+        }
+        .photo_wrap{
+            width:240px;
+            height:350px;
+            position:absolute;
+            left:50%;
+            top:50%;
+            -webkit-transform: translate(-50%,-50%);
+            perspective: 800px;
+            -webkit-perspective: 800px;
+        }
+        .photo_wrap .photo{
+            width:100%;
+            height:100%;
+            box-shadow:0 0 10px rgba(0,0,0,.2);
+            transform-style:preserve-3d;
+            -webkit-transform-style:preserve-3d;
+            transition:all 1s ;
+        }
+        .photo .side{
+            position:absolute;
+            padding:5px;
+            width:100%;
+            height:100%;
+            background:#eee;
+        }
+        .photo .front_side{
+            backface-visibility:hidden;
+            -webkit-transform:rotateX(0deg);
+        }
+        .photo figure img{
+            width: 100%;
+        }
+        .photo figure figcaption{
+            text-align: center;
+            font-size:16px;
+            font-weight:800;
+            line-height: 32px;
+            color:#66CCFF
+        }
+        .photo .back_side{
+            backface-visibility: hidden;
+            -webkit-transform:rotateX(180deg);
+        }
+        .photo_front .photo{
+            -webkit-transform:rotateX(0deg);
+
+        }
+        .photo_back .photo{
+            -webkit-transform:rotateX(180deg);
+
+        }
+    </style>
+</head>
+<body>
+<div class="photo_wrap photo_front" onclick="turn(this)">
+    <div class="photo">
+        <div class="side front_side">
+            <figure>
+                <figcaption>*李美兰*</figcaption>
+                <img src="./lan.jpg">
+            </figure>
+        </div>
+        <div class="side back_side">
+            <p class="desc">李美兰.......................</p>
+        </div>
+    </div>
+</div>
+<script>
+
+
+    var turn = function(ele){
+        var cls = ele.className;
+        if(/photo_front/.test(cls)){
+            cls = cls.replace(/photo_front/,'photo_back');
+        }else{
+            cls = cls.replace(/photo_back/,'photo_front');
+        }
+        return ele.className=cls;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象-构造函数继承</title>
+</head>
+<body>
+<script type="text/javascript">
+    function Animal(){
+        this.special="动物";
+    }
+    function Cat(name,color){
+
+        this.name=name;
+        this.color=color;
+    }
+    Cat.prototype = new Animal();
+    Cat.prototype.constructor = Cat;
+    var cat1=new Cat("阿毛","灰色");
+
+  for(var prop in cat1){
+      if(cat1.hasOwnProperty(prop)){
+          console.log("cat1["+prop+"]:"+cat1[prop])
+      }
+  };
+    for(var prop in cat1){
+            console.log("cat1["+prop+"]:"+cat1[prop])
+    };
+  console.log(Cat.prototype.constructor==cat1.constructor);
+  console.log("---"+Cat.prototype.isPrototypeOf(cat1));
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重方法二</title>
+</head>
+<body>
+<script>
+    function unique(arr){
+        var res=[];
+        arr.forEach(function(item,index){
+            if(res.indexOf(item)===-1 ){
+                res.push(item);
+                return false;
+            }
+        });
+        return res;
+    }
+    //求数组最大数最小数
+    function compare(arr){
+        var max = arr[0];
+        var min = arr[0];
+        arr.forEach(function(item){
+            item>max?max=item:max;
+            item<min?min=item:min;
+        });
+        return max;
+        return min;
+    }
+</script>
+</body>
+</html>

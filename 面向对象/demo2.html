@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象二</title>
+</head>
+<body>
+<script>
+     function Cat(food){
+         this.name ="小猫";
+         this.food=food;
+    };
+    Cat.prototype.say=function(){
+        console.log(this.name+this.food);
+    };
+    var cat = new Cat("fish");
+    cat.say();
+    function Dog(food){
+        this.food = food;
+        this.name = "小狗"
+    }
+    var dog = new Dog("bone");
+    console.log(dog.food);
+    cat.say.apply(dog);
+</script>
+</body>
+</html>

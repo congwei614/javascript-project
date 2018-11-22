@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+
+            width: 200px;
+
+            height: 300px;
+
+            border:1px solid black;
+
+        }
+
+        #txt1{
+
+            border:1px solid black;
+
+        }
+    </style>
+    <script>
+        window.onload=function(){
+
+            var oDiv=document.getElementById('div1');
+
+            var oTxt=document.getElementById('txt1');
+
+            var oBtn=document.getElementById('btn1');
+
+            window.onkeydown=function(e){
+
+                var ev=e||window.event;
+
+                if (ev.keyCode==13 && ev.ctrlKey) {
+                    oTxt.value='';
+                    oDiv.innerHTML+=oTxt.value+' ';
+
+
+
+                };
+
+            }
+
+            oBtn.onclick=function(){
+
+                oDiv.innerHTML+=oTxt.value+' ';
+
+                oTxt.value='';
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+
+<input id="txt1" type="text" value="ctrl+enter提交" />
+
+<input id="btn1" type="button" value="提交" />
+</body>
+</html>

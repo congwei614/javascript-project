@@ -1,0 +1,73 @@
+body,p,div,a,h2,ul,li,dl,dt,dd,a{ margin:0;padding:0}
+.nav{ position: relative;}
+.main_nav{
+    position:absolute;
+    top:80px;
+    left:50px;
+    background:#52585a;
+    width:200px;
+    height:400px;
+}
+.main_nav ul .active{
+    background: #999;}
+.main_nav ul li{
+    list-style: none;
+    margin:5px 0;
+    padding:0 0 0 15px;
+    height: 30px;
+    line-height: 30px;
+}
+.main_nav ul li a{
+    text-decoration: none;
+    color:#fff;
+    font-size: 12px;
+}
+.main_nav ul li a:hover{color:red;}
+.main_nav ul li i{
+    margin: 0 5px;
+    color: #fff;
+    font-style: normal;
+;}
+.none{ display:none;}
+.sub{
+    position: absolute;
+    top:0;
+    left:200px;
+    width: 598px;
+    height: 398px;
+    background: #f7f7f7;
+    border:1px solid #ccc;
+    box-shadow: 2px 0px 2px #666;
+
+}
+.sub_nav dl{
+
+    min-height: 20px;
+    overflow: hidden;
+    padding:5px ;
+
+}
+.sub_nav dl dt{
+    font-weight:bold;
+    width: 74px;
+    line-height: 40px;
+    float: left;
+    overflow: hidden;
+    text-align: right;
+}
+.sub_nav dl dt a{font-size: 14px;}
+.sub_nav dl dt i{ font-style: normal;}
+.sub_nav dl a{
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+}
+.sub_nav dl a:hover{
+    color:#FF0000;
+}
+.sub_nav dl dd{ width: 504px; float:left; border-bottom: 1px solid #eee; margin:0 5px; padding:5px 0;}
+.sub_nav dl dd a{
+    border-left:1px solid #ccc; display: inline-block; margin:10px 5px; padding: 0 0 0 5px;
+    line-height: 12px;
+}
+

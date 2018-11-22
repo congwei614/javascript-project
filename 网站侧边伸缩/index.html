@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网站侧边伸缩</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        .box{ position: relative; margin:100px 0 ;}
+        .content{ width:400px; height:400px; background:#ff0; position: absolute;left:-400px;}
+        .tip{ width: 20px; cursor:pointer; line-height: 20px;
+            background: #000;color:#fff; position: absolute;left:0;
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="content" ></div>
+    <div class="tip">点我展示</div>
+</div>
+<script type="text/javascript">
+    window.onload=function(){
+ var timer = null;
+ var tip = document.getElementsByClassName('tip')[0];
+ var content = document.getElementsByClassName('content')[0];
+ function goMove(){
+    clearInterval(timer);
+     if(content.offsetLeft=='-400'){
+        timer = setInterval(function(){
+            if(parseInt(content.offsetLeft)<0){
+                content.style.left=content.offsetLeft+ 20+'px';
+                tip.style.left=tip.offsetLeft+20+'px';
+            }
+        },10)
+
+     }else if( content.offsetLeft=='0'){
+         clearInterval(timer);
+         timer = setInterval(function(){
+             if (parseInt(content.offsetLeft)>-400) {
+                 content.style.left = content.offsetLeft - 20 + 'px';
+                 tip.style.left = tip.offsetLeft - 20 + 'px';
+             }
+         },10)
+     }
+ };
+ tip.onclick=function(){
+
+     goMove();
+ }
+    }
+</script>
+</body>
+</html>

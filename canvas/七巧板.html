@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas 七巧板练习</title>
+</head>
+<body>
+<canvas id="canvas" width="800" height="800"></canvas>
+<script>
+    var arr = [
+        {p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#caff67"},
+
+        {p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"#67becf"},
+
+        {p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:"#f6ca29"},
+
+        {p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:"#ef3d61"}
+    ]
+ var canvas = document.getElementById('canvas'),
+     context = canvas.getContext('2d'),
+     len = arr.length;
+    for(var i = 0;i < len; i++){
+        draw(arr[i],context);
+    }
+    function draw(item,context){
+        context.beginPath();
+        context.moveTo(item.p[0].x,item.p[0].y);
+        var leng = item.p.length;
+        for(var j = 0; j< leng; j++){
+            context.lineTo(item.p[j].x,item.p[j].y);
+            context.fillStyle=item.color;
+            context.fill();
+        }
+
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉搜索框</title>
+    <style type="text/css">
+        html,body{ width: 100%; height:100%; margin:0;padding:0;}
+        .cover{ position: fixed; background: rgba(0,0,0,.8); width: 100%; height: 100%; display:none; z-index: 2 }
+        .search_box{box-sizing: border-box;  background:url(bg.jpg) no-repeat;
+            background-size:100%;
+            position:relative;
+            width:100%; height:100%;  }
+        .search_box .search_container{
+            position: absolute;
+            z-index: 3;
+            left:300px;
+            top:200px;
+        }
+        .search_box form{ box-sizing: border-box; background: #fff;
+            width:500px; height: 40px; overflow: hidden; z-index: 12;
+        }
+        form input{border: none;  outline: none;   }
+        form .search_text{ box-sizing: border-box; width:450px; height:34px; line-height:34px; margin: 3px;}
+        form .search_btn{
+            box-sizing: border-box; display: inline-block;
+            background:#007daa; background-image:url(hpc20.png);
+            background-position:-160px -60px; width:44px;
+            height:40px;  float:right; cursor: pointer;
+        }
+        .search_suggest ul{ list-style: none; background: #fff; margin: 0; padding:0; width: 500px;
+        border: 1px solid #ccc; box-sizing: border-box; border-top:2px solid #ccc;
+        display: none; z-index: 3;
+            height: auto;
+            overflow: hidden;
+            position: absolute;left: 300px;
+            top:240px;
+        }
+        .search_suggest ul li{  line-height: 35px;}
+        .search_suggest ul li a{
+            text-decoration: none; color:#666;}
+        .search_suggest ul li:hover{ background: #d2d2d2;}
+
+    </style>
+</head>
+<body>
+<div class="cover"></div>
+<div class="search_box">
+
+    <div class="search_container">
+        <form action="">
+            <input type="text" class="search_text" placeholder="请输入">
+            <input type="submit" value="" class="search_btn">
+        </form>
+    </div>
+
+    <div class="search_suggest">
+        <ul>
+
+        </ul>
+    </div>
+
+</div>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+
+/*     var h=0;
+    function addH(){
+     if(h<200){
+         h+=10;
+         $('.search_suggest ul').height(h);
+         $('.search_suggest ul').show();
+         setTimeout(addH,10);
+
+     }else {return;}
+    }*/
+$('form .search_text').on('keyup',function(){
+    var val =$('input.search_text').val();
+   if($.trim(val).length!=0){
+       var oSc = document.createElement("script");
+       oSc.src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+val+"&cb=callback";
+       $("body").append(oSc);
+       $(".search_suggest ul").show();
+       $(".cover").show();
+   }
+
+});
+function callback(m){
+    $(".search_suggest ul").html("");
+m.s.forEach(function(e){
+    var oLi= document.createElement("li");
+    oLi.innerHTML="<li><a href='https://www.baidu.com/s?wd="+e+"'>"+e+"</a> </li>";
+    $(".search_suggest ul").append(oLi);
+})
+}
+$("body").click(function(){
+    $(".search_suggest ul").hide();
+    $(".cover").hide();
+})
+
+</script>
+</body>
+</html>

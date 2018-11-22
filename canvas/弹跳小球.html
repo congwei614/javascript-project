@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹跳小球</title>
+    <style>
+        #canvas{
+            position: fixed;
+            left:0;
+            top:0;
+            bottom:0;
+            right:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="600" height="300" style="margin:50px auto"></canvas>
+<script>
+    var ball = {
+        x:100,
+        y:100,
+        r:30,
+        vx:4,
+        vy:-10,
+        g:5
+    };
+    var canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d');
+
+   var move = setInterval(function(){
+        render(context);
+        update(context);
+    },50);
+    function render(context){
+        context.clearRect(0,0,context.canvas.width,context.canvas.height);
+        context.beginPath();
+        context.arc(ball.x,ball.y,ball.r,0,2*Math.PI);
+        context.fillStyle="#f00";
+        context.fill();
+    }
+    function update(context){
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        ball.vy += ball.g;
+       if(ball.y > context.canvas.height-ball.r){
+           ball.y = context.canvas.height-ball.r;
+           ball.vy =-ball.vy*0.5;
+           console.log(ball.vy);
+       }
+       if(ball.x > context.canvas.width-ball.x){
+           ball.vx=-ball.vx*0.5;
+       }
+       if(ball.x<ball.r){
+           ball.vx=-ball.vx*0.5;
+       }
+    }
+</script>
+</body>
+</html>

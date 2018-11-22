@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页加载进度条4</title>
+    <style>
+       *{margin:0;padding:0}
+        .loading{ width:100%;height:100%;position: fixed;left:0;top:0;background: rgb(255,255,255);z-index: 10; }
+        .loading .pic{ width:100px; height: 100px;
+            position: absolute; left: 50%; top:50%;
+          transform:translate(-50%,-50%)
+        }
+        .loading .pic p { display: block;
+            position: absolute;left: 10px; top:10px; width:80px; height:80px;
+            border-radius:50px;
+            box-shadow: 0 3px 0 rgba(0,0,0,.4);
+            text-align: center;
+            animation:rotate 1s infinite linear;
+
+        }
+       .loading .pic span{ margin:0 30px;line-height: 100px;
+            font-size:30px;}
+
+        @keyframes rotate{
+            0%{transform:rotate(0deg)}
+            100%{transform:rotate(360deg)}
+        }
+        img{ width:100%;}
+    </style>
+</head>
+<body>
+<div class="loading">
+    <div class="pic"><p></p><span>0%</span></div>
+</div>
+
+<script src="jquery.js"></script>
+<script>
+    var imgSrc = [
+        "http://pic1.win4000.com/wallpaper/4/57b7ca9d0482a.jpg",
+        "http://pic1.win4000.com/wallpaper/1/569886c5d7089.jpg",
+        "http://www.bz55.com/uploads/allimg/150608/139-15060Q60Z0-50.jpg",
+        "http://www.pp3.cn/uploads/201606/20160627004.jpg",
+        "http://pic1.win4000.com/wallpaper/7/582047030cbf5.jpg",
+        "http://www.pp3.cn/uploads/201603/20160323002.jpg",
+        "http://pic1.win4000.com/wallpaper/f/512dac0a2dd88.jpg"
+
+    ];
+
+    var len=imgSrc.length;
+    var count=0;
+    for(i=0; i<len;i++){
+        var img =document.createElement("img");
+        img.src=imgSrc[i];
+        $("body").append(img);
+    }
+    $.each(imgSrc,function(i,src){
+        var imgobj=new Image();
+        $(imgobj).on('load error',function(){
+            $(".loading span").html(parseInt((count/len)*100)+"%");
+            count++;
+            if(count>=len){
+                $(".loading").fadeOut();
+            }
+        });
+        imgobj.src=src;
+    });
+
+  //console.log(typeof(img));
+  /*console.log(img);
+  $.each(img,function(i,currentSrc){
+      var imgObj=new Image();
+      $(imgObj).on("load error",function(){
+          $(".loading span").html(parseInt((count/len)*100)+"%");
+          count++;
+          if(count>=len){
+              $(".loading").fadeOut();
+          }
+      })
+      imgObj.src=currentSrc;
+  })*/
+</script>
+</body>
+</html>

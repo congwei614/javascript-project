@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>限时抢购剩余时间</title>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload=function(){
+        leftTime();
+    }
+    function leftTime(){
+        var nowTime = new Date();
+        var endTime = new Date(2017,5,20,10,10,0);
+        var leftTime =(endTime.getTime()-nowTime.getTime())/1000;
+        var d = parseInt(leftTime/(24*60*60));
+        var h = parseInt((leftTime/(60*60))%24);
+        var m = parseInt((leftTime/60)%60);
+        var s = parseInt(leftTime%60);
+        document.getElementById("leftTime").innerHTML="限时抢购："+d+"天"+h+"小时"+m+"分钟"+s+"秒";
+        if(leftTime<=0){
+            document.getElementById("leftTime").innerHTML="团购结束";
+        }
+        setInterval("leftTime()",500);
+
+    }
+</script>
+<h1 id="leftTime"></h1>
+</body>
+</html>

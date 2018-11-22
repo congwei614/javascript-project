@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示具体时间</title>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload=function(){
+        showTime();
+    }
+    function checkTime(i){
+        if(i<10){
+            i="0"+i;
+        }
+        return i;
+    }
+    function showTime(){
+        var nowTime = new Date();
+        var Y =nowTime.getFullYear();
+        var M =nowTime.getMonth()+1;
+        var D = nowTime.getDate();
+        var Day =nowTime.getDay();
+        var H = nowTime.getHours();
+        var MI = nowTime.getMinutes();
+        MI = checkTime(MI);
+        var S = nowTime.getSeconds();
+        S=checkTime(S);
+        var newArr =["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+        var H1= document.getElementById("time");
+        H1.innerHTML=Y+'年'+M+'月'+D+'日'+H+'时'+MI+'分'+S+'秒'+newArr[Day];
+        setInterval(showTime,500);
+    }
+
+</script>
+<h1 id="time" style="text-align:center; margin: 200px 0;"></h1>
+</body>
+</html>

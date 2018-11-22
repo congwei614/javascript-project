@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="search">天气查询</button>
+<input id="city" type="text" value="tbody">
+<div class="ctn">
+    <div id="mufeng">
+    </div>
+    <div id="future"></div>
+</div>
+<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#search').on('click',function(){
+        var city = $('#city').val()||'北京';
+        $citycode=urlencode(city);
+        url='http://v.juhe.cn/weather/index?format=2&cityname='+$citycode+'&key=c82727e986a4f6cfc6ba1984f1f9183a';
+        $.ajax({url: url,
+            dataType: "jsonp",
+            type:"get",
+            data:{location:city},
+            success:function(data){
+                var sk = data.result.sk;
+                var today = data.result.today;
+                var futur = data.result.future;
+                var fut = "日期温度天气风向";
+                $('#mufeng').html("<p>" + '当前: ' + sk.temp + '℃ , ' + sk.wind_direction + sk.wind_strength + ' , ' + '空气湿度' + sk.humidity + ' , 更新时间' + sk.time + "</p><p style='padding-bottom: 10px;'>" + today.city + ' 今天是: ' + today.date_y + ' ' + today.week + ' , ' + today.temperature + ' , ' + today.weather + ' , ' + today.wind + "<p></p>");
+                $('#future').html("<p>" + '未来: ' + futur[0].temperature+ '℃ , ' + futur[0].weather + futur[0].wind + ' , ' + ' , 更新时间' + futur[0].week+futur[0].date + "</p><p style='padding-bottom: 10px;'>" + today.city + "<p></p>");
+            } });
+    });
+    function urlencode (str) {
+        str = (str + '').toString();
+        return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').
+        replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
+    }
+
+</script>
+</body>
+</html>

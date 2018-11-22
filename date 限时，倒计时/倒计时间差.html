@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时间差</title>
+</head>
+<body>
+<script type="text/javascript">
+   window.onload=function(){
+       getLeftTime();
+   }
+    function getLeftTime(){
+        var nowTime = new Date();
+        //document.write(nowTime);
+        var endTime = new Date(2017,11,11)
+
+        var leftTime = Math.ceil((endTime.getTime()-nowTime.getTime())/(24*60*60*1000));
+        document.getElementById("leftTime").innerHTML="距离双十一还有："+leftTime;
+    }
+
+</script>
+<h1 id="leftTime"></h1>
+</body>
+</html>

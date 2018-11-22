@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+<script>
+    var id = 20;
+    function test(){
+        (()=>{
+            console.log('id:'+this.id)
+        })()
+    }
+    test();
+    test.call({id:10});
+</script>
+</body>
+</html>

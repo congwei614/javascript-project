@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片预加载之无序加载</title>
+    <style>
+        body,a,div{margin:0; padding:0;}
+        .box{text-align: center;}
+        .box img{ width:100%;}
+        .box a{
+            text-decoration: none;
+            display: inline-block;
+            height: 30px;
+            padding: 0 5px;
+            margin-right: 30px;
+            border:1px solid #ccc;
+            line-height: 30px;
+
+        }
+        .box a:hover{
+            background: #cccccc;}
+        .load{
+            position: fixed;
+            width:100%;
+            height:100%;
+            background: #cccccc;
+            text-align: center;
+        }
+        .load .progress{
+            margin-top: 250px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="load">
+    <div class="progress">0%</div>
+</div>
+<div class="box">
+    <img id="img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498703195&di=dd217a17088d42bf8810524b760e5dab&imgtype=jpg&er=1&src=http%3A%2F%2Fi10.topit.me%2Fo171%2F1017117393ebf92448.jpg",
+    />
+    <a href="javascript:;" class="btn" data-control="prev">上一张</a>
+    <a href="javascript:;" class="btn" data-control="next">下一张</a>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/preload.js"></script>
+<script type="text/javascript">
+var imgsrc =[
+    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498703195&di=dd217a17088d42bf8810524b760e5dab&imgtype=jpg&er=1&src=http%3A%2F%2Fi10.topit.me%2Fo171%2F1017117393ebf92448.jpg",
+    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498108560030&di=1da96deec8077352543fc70db57977b9&imgtype=0&src=http%3A%2F%2Ffe.topit.me%2Fe%2Fba%2Fab%2F117896159227aabbaeo.jpg",
+    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498108614088&di=47cc4a4f56942e377091a97b8fe98dd7&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1308%2F13%2Fc0%2F24431877_1376375393217.jpg",
+    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498108652058&di=b29a0e75a214ab899b1058de52958dd5&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D3786137112%2C3182356146%26fm%3D214%26gp%3D0.jpg",
+    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498703378&di=4c58fe56cdd370e4caaf5c21f639bf7b&imgtype=jpg&er=1&src=http%3A%2F%2Fp17.qhimg.com%2Fbdr%2F__%2Fd%2F_open360%2Fcartoonm01250%2F18.jpg",
+    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498108735795&di=41ed8b35e37591b8b48fd775b47797a4&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F3%2F5174ac40efeb0.jpg",
+    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498108769915&di=ccd5d7dd1c6c65c695a42185d8fe03c0&imgtype=0&src=http%3A%2F%2Fp16.qhimg.com%2Fbdr%2F__%2Fd%2F_open360%2Fmn0627%2F12.jpg"
+];
+var len =imgsrc.length,
+    index = 0,
+    count = 0;
+    $(".btn").on("click",function(){
+        if(
+          $(this).data("control")==="prev"
+        ){
+            index=Math.max(0,--index);
+        }else{
+              index=Math.min(len-1,++index);
+        }
+        $("#img").attr("src",imgsrc[index]);
+    });
+$.preload(imgsrc,{
+    each:function(count){
+        $(".progress").html(Math.round((count+1)/len*100)+"%")
+    },
+    all:function(){
+        $(".load").hide();
+    }
+})
+/*$.each(imgsrc,function(index,src){
+      var imgobj=new Image();
+      $(imgobj).on("load error",function(){
+          $(".progress").html(Math.round((count+1)/len*100)+"%")
+          count++;
+          if(count>len-1){
+              $(".load").hide();
+          }
+      });
+      imgobj.src=src;
+});*/
+
+
+
+
+</script>
+</body>
+</html>

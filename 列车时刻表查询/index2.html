@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript 闭包 </title>
+</head>
+<body>
+<script type="text/javascript">
+ /* for(i=0;i<10;i++){
+      setTimeout(function timer(){
+          console.log(i);
+      },1000)
+  }*/
+  /*for(i=0;i<10;i++){
+      (function(i){
+          setTimeout(function timer(){
+              console.log(i);
+          },1000);
+      })(i);
+  }*/
+/*  for(i=0;i<10;i++){
+      setTimeout((function(e){
+          return function(){
+              console.log(e);
+          }
+      })(i),1000)
+  }*/
+/*  function out(){
+      var count=10;
+      return function(){
+          count++;
+          console.log(count);
+      }
+  }
+  var foo=out();
+  foo();
+  foo();*/
+  (function(){
+        var a = 10;
+      (function(a){
+            a++;
+            console.log(a);
+        })(a)
+  })()
+</script>
+</body>
+</html>

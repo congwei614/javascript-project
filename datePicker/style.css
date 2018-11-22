@@ -1,0 +1,74 @@
+body,html{
+    margin:0;
+    padding:0;
+    -webkit-font-smoothing: antialiased;
+}
+.pickerBox{
+    position:absolute;
+    border:1px solid #ddd;
+    width:250px;
+    height:245px;
+    box-shadow:0 2px 3px 2px rgba(0,0,0,.1);
+    margin:0 auto;
+    display: none;
+}
+.pickerBox_show{
+    display: block;
+}
+.pickerBox .picker_header{
+    box-sizing:border-box;
+    width:100%;
+    height:50px;
+    padding:0 30px;
+    line-height: 50px;
+    text-align: center;
+}
+.pickerBox .picker_header .btn{
+    text-decoration:none;
+    font-size:20px;
+    font-weight:700;
+    color:#FF0000;
+}
+.pickerBox .picker_header .prev-btn{
+     float:left;
+ }
+.pickerBox .picker_header .next-btn {
+    float: right;
+}
+.pickerBox .picker_body table{
+    width:100%;
+    border-collapse: collapse;
+}
+.pickerBox .picker_body table tr{
+     border-top:1px solid #ccc;
+ }
+.pickerBox .picker_body table tr td:nth-child(1){
+    border-left:1px solid transparent;
+}
+
+.pickerBox .picker_body table tr td:nth-child(7){
+    border-right:1px solid transparent;
+}
+
+.pickerBox .picker_body table tr:last-child{
+    border-bottom:0 solid transparent;
+}
+.pickerBox .picker_body table td{
+    border-right:1px solid #ccc;
+
+}
+.pickerBox .picker_body table thead{
+    font-size:14px;
+    font-weight:500;
+}
+.pickerBox .picker_body table tbody{
+    font-size:12px;
+    color:#aaa;
+    font-weight:normal;
+}
+.pickerBox .picker_body table td{
+    text-align: center;
+    cursor:pointer;
+    height:25px;
+    vertical-align:middle;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+    <style>
+        .box{
+            width:300px;
+            height:300px;
+            background-color:#f00;
+            cursor:move;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    window.onload=function(){
+        var box = document.getElementsByClassName('box')[0];
+        var diffX =0;
+        var diffY = 0;
+        box.onmousedown = function(e){
+            var event = e || window.event;
+            var target = event.target || event.srcElement;
+            diffX = event.clientX - box.offsetLeft;
+            diffY = event.clientY - box.offsetTop;
+            if(typeof box.setCapture!='undefined') {
+                box.setCapture();
+            }
+            box.onmousemove=function(e){
+                var event = e || window.event;
+                var target = event.target || event.srcElement;
+                box.style.left = event.clientX - diffX+"px";
+                box.style.top = event.clientY - diffY+"px";
+                if(event.clientX-diffX<0){
+                    box.style.left=0;
+                }else if(event.clientX-diffX>window.innerWidth-box.offsetWidth){
+                    box.style.left = window.innerWidth-box.offsetWidth+'px';
+                    // console.log(box.style.left)
+                    console.log(window.innerWidth-box.offsetWidth);
+                }
+            }
+
+            box.onmouseup = function(e) { //当鼠标弹起来的时候不再移动
+                this.onmousemove = null;
+                this.onmouseup = null; //预防鼠标弹起来后还会循环（即预防鼠标放上去的时候还会移动）
+
+                //修复低版本ie bug
+                if(typeof box.releaseCapture!='undefined'){
+                    box.releaseCapture();
+                }
+            };
+        }
+
+
+    }
+</script>
+</body>
+</html>

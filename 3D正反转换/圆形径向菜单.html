@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圆形径向菜单</title>
+    <style>
+        body{margin:0;padding:0; background-color:#000000;font-smoothing:antialiased;font-family: Microsoft Yahei; }
+        #nav_box{width:200px; height:200px; position: absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);border: 2px dotted #fff;border-radius:50%; user-select:none; box-sizing:border-box; }
+        #nav_box .share{ position: absolute;top:0;bottom:0;left:0;right:0;margin: auto; width:60px;height:60px;background-color:#f00; text-align: center;line-height: 60px;color:#fff;font-size:16px; font-weight:600;border-radius:50%;cursor:pointer; text-shadow:2px 2px 2px rgba(0,0,0,.05) }
+        .nav_menu{list-style: none; text-align: center;line-height: 60px; width:100%; height: 100%; position: absolute; margin:0;padding:0; transform:scale(0); opacity:0;transition:all .5s;}
+        .nav_menu.active{transform:scale(1);opacity:1;}
+        .nav_menu >li{position: absolute;padding:0; margin:0; width: 40px; height: 40px;transform:translate(-50%,-50%)}
+        .nav_menu> li a{text-decoration:none;display: block;position:absolute; color:#fff;width:40px; height:40px; background: #f44283;border-radius:50%; font-size:12px; line-height: 40px;text-align: center; }
+
+    </style>
+</head>
+<body>
+<nav id="nav_box">
+    <ul class="nav_menu">
+        <li><a href="#">item1</a></li>
+        <li><a href="#">item2</a></li>
+        <li><a href="#">item3</a></li>
+        <li><a href="#">item4</a></li>
+        <li><a href="#">item5</a></li>
+        <li><a href="#">item6</a></li>
+        <li><a href="#">item1</a></li>
+        <li><a href="#">item2</a></li>
+        <li><a href="#">item3</a></li>
+        <li><a href="#">item4</a></li>
+        <li><a href="#">item5</a></li>
+        <li><a href="#">item6</a></li>
+    </ul>
+    <div class="share">分享</div>
+</nav>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    (function($){
+        var $navBox=$('#nav_box'),
+            $share = $navBox.find('.share'),
+            $nav_menu =$navBox.find('.nav_menu'),
+            $navs = $nav_menu.find('li '),
+            len = $navs.length,
+            isLocated = false,
+            $document = $(document);
+        $document.on('click','.share',function(e){
+            if(!$nav_menu.hasClass('active')&&!isLocated){
+                var gap = 360/len,
+                    wd = $navBox.width(),
+                    startAngle = 0,
+                    endAngle = 360,
+                    radius= wd/2;
+                $.each($navs,function(index,item){
+                    var radian = Math.PI/180*(index*gap);
+                    var X = radius + radius*Math.cos(radian);
+                    var Y = radius + radius*Math.sin(radian);
+                    $(this).css({
+                        left:X+'px',
+                        top:Y+'px'
+                    })
+                })
+
+            }
+            $nav_menu.toggleClass('active');
+            e.stopPropagation();
+            isLocated = true;
+        })
+    })(jQuery)
+</script>
+</body>
+</html>

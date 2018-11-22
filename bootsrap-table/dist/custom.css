@@ -1,0 +1,183 @@
+.modal-wrapper{
+    width:1080px;
+    margin:30px auto;
+    position: relative;
+}
+.testswitch {
+    position: relative;
+    width: 70px;
+    margin: 0 auto;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select: none;
+}
+.testswitch-checkbox {
+    display: none;
+}
+
+.testswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 20px;
+    margin:0;
+}
+
+.testswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.testswitch-inner::before, .testswitch-inner::after {
+    display: block;
+    float: right;
+    width: 50%;
+    height: 25px;
+    padding: 0;
+    line-height: 25px;
+    font-size: 14px;
+    color: white;
+    font-family:
+            Trebuchet, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.testswitch-inner::after {
+    content: attr(data-on);
+    padding-left: 8px;
+    background-color: #4197dd;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.testswitch-inner::before {
+    content: attr(data-off);
+    padding-right: 8px;
+    background-color: #eaeaea;
+    color: gray;
+    text-align: right;
+}
+
+.testswitch-switch {
+    position: absolute;
+    display: block;
+    width: 22px;
+    height: 22px;
+    margin:2px 4px;
+    background: #FFFFFF;
+    top: 0;
+    bottom: 0;
+    right:40px;
+    /* border: 2px solid #999999;  */
+    border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.testswitch-checkbox:checked + .testswitch-label .testswitch-inner {
+    margin-left: 0;
+}
+
+.testswitch-checkbox:checked + .testswitch-label .testswitch-switch {
+    right: 0px;
+}
+/*开关end*/
+#toolbar{
+    font-size:0;
+}
+#toolbar button{
+    font-size:14px;
+}
+/*面包屑begin*/
+.es-navigation {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #ccc;
+    margin: 0 0 10px 0;
+}
+.bread {
+    display: inline-block;
+}
+.bread .bread-txt {
+    font-size: 14px;
+    color: #333;
+    margin: 5px;
+}
+/*面包屑end*/
+/*工具条操作按钮 begin*/
+#toolbar{
+    line-height: 1;
+}
+.eis-btn{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding:2px 5px;
+    height:22px;
+    background: #fff;
+    border:1px solid #0099e3;
+    color:#0099e3;
+    margin-left:10px;
+    border-radius: 3px;
+}
+.sort-control{
+    color:#777;
+    border-radius:3px;
+    display: inline-block;
+    top:55px;
+    left:0;
+    position: absolute;
+}
+.sort-control .sort-txt-box{
+    border: 1px solid #cecece;
+    border-radius:3px;
+    background: #f8f8f8;
+    width:80px;
+    display: inline-block;
+    padding:1px 5px;
+    overflow: hidden;
+    cursor:pointer;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.sort-txt-box .sort-lock,
+.sort-txt-box .sort-unlock{
+    position: relative;
+}
+.sort-txt-box .sort-unlock{
+    color:#0099e3;
+}
+.sort-txt-box .sort-unlock .fa{
+    color:#0099e3;
+}
+.sort-control .fa{
+    color:#ccc;
+    margin-right:5px;
+}
+.sort-tips{
+    display: none;
+}
+/*操作按钮 end*/
+/*修改bootstrap 默认样式 begin*/
+.table-no-bordered>tbody>tr:hover{
+    background: #f1f7fd;
+}
+.fixed-table-container.table-no-bordered{
+    border:1px solid #ddd;
+}
+.table>thead>tr{
+    background: #f6f6f6;
+}
+.table-cursor>tbody>tr{
+    cursor:move;
+}
+ .table-cursor>tbody >tr:hover{
+    border-top:1px solid #0099e3;
+    box-shadow: 0 1px 3px 3px #e3e3e3 ,0 0 2px 2px rgba(0, 153, 227, 0.22);
+     background: #f1f7fd;
+
+}
+/*修改bootstrap 默认样式 end*/

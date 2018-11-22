@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="skins/square/red.css">
+    <link rel="stylesheet" href="css/cart.css">
+
+</head>
+<body>
+<p style="width:960px; color:#666;font-size:16px; margin: 0 auto; height: 40px; line-height: 40px;">首页&gt;我的购物车</p>
+<div class="cart">
+    <div class="cart_table_th">
+        <div class="th th_check_all"><input class="check_all check" type="checkbox"><label for="all">全选</label></div>
+        <div class="th th_info">商品信息</div>
+        <div class="th th_price">单价</div>
+        <div class="th th_number">数量</div>
+        <div class="th th_sum">金额</div>
+        <div class="th th_option">操作</div>
+    </div>
+    <div class="cart_table_list">
+        <div class="cart_single">
+            <dl>
+                <dd class="check_single"><input class="check" type="checkbox"></dd>
+                <dt class="p_info">
+                <img src="images/1.jpg">
+                    <h2>Casio/西欧卡西欧卡西欧 EX-TR350</h2>
+                </dt>
+                <dd class="p_price">¥<span>8888</span></dd>
+                <dd class="p_number"><span class="reduce">-</span><input class="number" type="text" value="1"><span class="add">+</span></dd>
+                <dd class="p_total">¥<span>8888.00</span></dd>
+                <dd class="p_option"><span class="delete">删除</span></dd>
+            </dl>
+        </div>
+        <div class="cart_single">
+            <dl>
+                <dd class="check_single"><input class="check" type="checkbox"></dd>
+                <dt class="p_info">
+                    <img src="images/2.jpg">
+                <h2>Canon/佳能 PowerShot SX50 HS</h2>
+                </dt>
+                <dd class="p_price">¥<span>88.3</span></dd>
+                <dd class="p_number"><span class="reduce">-</span><input class="number" type="text" value="1"><span class="add">+</span></dd>
+                <dd class="p_total">¥<span>88.30</span></dd>
+                <dd class="p_option"><span class="delete">删除</span></dd>
+            </dl>
+        </div>
+        <div class="cart_single">
+            <dl>
+                <dd class="check_single"><input class="check" type="checkbox"></dd>
+                <dt class="p_info">
+                    <img src="images/3.jpg">
+                <h2>Sony/索尼 DSC-WX300</h2>
+                </dt>
+                <dd class="p_price">¥<span>888.5</span></dd>
+                <dd class="p_number"><span class="reduce">-</span><input class="number" type="text" value="1"><span class="add">+</span></dd>
+                <dd class="p_total">¥<span>888.50</span></dd>
+                <dd class="p_option"><span class="delete">删除</span></dd>
+            </dl>
+        </div>
+        <div class="cart_single">
+            <dl>
+                <dd class="check_single"><input class="check" type="checkbox"></dd>
+                <dt class="p_info">
+                    <img src="images/4.jpg">
+                <h2>Fujifilm/富士 instax mini 25</h2>
+                </dt>
+                <dd class="p_price">¥<span>6888.88</span></dd>
+                <dd class="p_number"><span class="reduce">-</span><input class="number" type="text" value="1"><span class="add">+</span></dd>
+                <dd class="p_total">¥<span>6888.88</span></dd>
+                <dd class="p_option"><span class="delete">删除</span></dd>
+            </dl>
+        </div>
+        <div class="cart_single">
+            <dl>
+                <dd class="check_single"><input class="check" type="checkbox"></dd>
+                <dt class="p_info">
+                    <img src="images/3.jpg">
+                <h2>Sony/索尼 DSC-WX300</h2>
+                </dt>
+                <dd class="p_price">¥<span>888.5</span></dd>
+                <dd class="p_number"><span class="reduce">-</span><input class="number" type="text" value="1"><span class="add">+</span></dd>
+                <dd class="p_total">¥<span>888.5</span></dd>
+                <dd class="p_option"><span class="delete">删除</span></dd>
+            </dl>
+        </div>
+        <div class="cart_single">
+            <dl>
+                <dd class="check_single"><input class="check" type="checkbox"></dd>
+                <dt class="p_info">
+                    <img src="images/4.jpg">
+                <h2>Fujifilm/富士 instax mini 25</h2>
+                </dt>
+                <dd class="p_price">¥<span>6888.88</span></dd>
+                <dd class="p_number"><span class="reduce">-</span><input class="number" type="text" value="1"><span class="add">+</span></dd>
+                <dd class="p_total">¥<span>6888.88</span></dd>
+                <dd class="p_option"><span class="delete">删除</span></dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="cart_foot">
+    <div class="check_all"><input class="check_all check" type="checkbox" ><label>全选</label></div>
+    <div class="delete">全部删除</div>
+    <div class="closing">结算</div>
+    <div class="total">合计：<span>¥0.00</span></div>
+    <div class="selected">已选中<span>0</span>件商品<i>◆</i></div>
+    <div class="selected_view"></div>
+</div>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

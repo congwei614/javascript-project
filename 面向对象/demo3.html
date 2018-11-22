@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自运行函数</title>
+</head>
+<body>
+<script>
+ var o = new Object();
+ (function(win,doc){
+         function Scroll(options){
+           this._init();
+         }
+         Scroll.prototype._init=function(){
+             alert("hello");
+         };
+       o.fun1=Scroll;
+    })(window,document);
+new o.fun1();
+
+</script>
+</body>
+</html>

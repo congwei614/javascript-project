@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        input { width: 60px; }
+        div { margin: 10px 0 }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+
+            // 获取元素
+            var num1 = document.getElementById('num1');
+            var num2 = document.getElementById('num2');
+            var ret = document.getElementById('ret');
+            var btns = document.getElementsByTagName('button');
+            var p = parseInt;
+            //为按钮添加点击事件，计算结果
+            var val1=parseInt(num1.value);
+            var val2=parseInt(num2.value);
+            var len=btns.length;
+            var i;
+            switch(btns[i]) {
+                case 'btns[0]':
+                    this.onclick=function(){
+                        ret.innerHTML=val1+val2;
+                        alert(0);
+                    }
+                    break;
+                case 'btns[1]':
+                    this.onclick=function(){
+                        ret.innerHTML=val1+val2
+                    }
+                    break;
+                case 'btns[2]':
+                    this.onclick=function(){
+                        ret.innerHTML=val1+val2
+                    }
+                case 'btns[3]':
+                    this.onclick=function(){
+                        ret.innerHTML=val1+val2
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+<input id="num1" type="text"/>
+<input id="num2" type="text"/>
+<div>结果：<span id="ret"></span></div>
+<button>+</button>
+<button>-</button>
+<button>*</button>
+<button>/</button>
+</body>
+</html>

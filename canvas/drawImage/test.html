@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<p id="box"></p>
+<script>
+    var imgObj = new Image();
+    imgObj.onload=function(){
+        var canvas = document.getElementById('canvas');
+        var clientW = window.innerWidth;
+        canvas.width=clientW;
+        canvas.height=400;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(imgObj,0,0,clientW,400);
+    }
+    imgObj.src='timg.jpg';
+    var box = document.getElementById('box');
+       document.onmousemove=function(e) {
+           var e = e || widow.event;
+
+           box.innerHTML = "pageX:" + e.pageX + ';' + "pageY" + ";" + e.pageY + "<br>" +
+               "clientX:" + e.clientX + ";" + "clientY:" + e.clientY;
+       }
+</script>
+</body>
+</html>

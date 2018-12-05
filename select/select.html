@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/architecture.css">
+</head>
+<body>
+<div id="select"></div><div style="clear: both"></div>
+<code style="display: block; margin: 20px auto;">
+    $(function(){<br>
+    $('#select').select({<br>
+    title:'联系人',//标题<br>
+    wth:'half',// ''100%，half:50%,third:30%<br>
+    require:true,//true,显示红*，false不显示<br>
+    showTitle:false,//是否显示标题<br>
+    //item数据<br>
+    items:[{<br>
+    id:"01",<br>
+    contxt:'项目一'<br>
+    },{<br>
+    id:"02",<br>
+    contxt:'项目二'<br>
+    }]<br>
+    })<br>
+    })
+</code>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/select.js"></script>
+<script>
+    $(function(){
+        $('#select').select({
+            title:'联系人',//标题
+            wth:'half',// ''100%，half:50%,third:30%
+            require:true,//true,显示红*，false不显示
+            showTitle:true,//是否显示标题
+            //item数据
+            items:[{
+                id:"01",
+                contxt:'项目一'
+            },{
+                id:"02",
+                contxt:'项目二'
+            }]
+        })
+    })
+</script>
+
+</body>
+</html>
